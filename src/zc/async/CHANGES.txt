@@ -5,6 +5,10 @@ Changes
 1.5.5 (unreleased)
 ==================
 
+- Only depend on 'uuid' package from PyPI when Python <= 2.4 (that
+  package is not thread-safe, while recent standard library package is:
+  https://mail.python.org/pipermail/python-dev/2007-July/073958.html
+  [seanupton]
 
 1.5.4 (2011-03-03)
 ==================
