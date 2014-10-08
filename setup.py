@@ -11,6 +11,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+import sys
 import os
 from setuptools import setup, find_packages
 
@@ -70,6 +71,32 @@ def text(*args, **kwargs):
     return res
 # end helpers; below this line should be code custom to this package
 
+REQUIRES = [
+    'ZODB3',
+    'pytz',
+    'rwproperty',
+    'setuptools',
+    'zc.queue',
+    'zc.dict>=1.2.1',
+    'zc.twist>=1.3',
+    'Twisted>=8.0.1',  # 8.0 was setuptools compatible, 8.0.1 had bugfixes.
+    # Note that Twisted builds with warnings with py2.4.  It works fine,
+    # and is considered a supported Python version on the Twisted site.
+    'zope.bforest>=1.2',
+    'zope.component',
+    'zope.event',
+    'zope.i18nmessageid',
+    'zope.interface',
+    'zope.minmax',
+    'zope.testing',
+    'rwproperty',
+]
+
+
+if sys.version_info < (2, 5):
+    REQUIRES += ['uuid']
+
+
 setup(
     name='zc.async',
     version='1.5.5dev',
@@ -87,27 +114,7 @@ setup(
         'src/zc/async/CHANGES.txt',
         out=(docutils is not None)),
     license='ZPL',
-    install_requires=[
-        'ZODB3',
-        'pytz',
-        'rwproperty',
-        'setuptools',
-        'uuid',
-        'zc.queue',
-        'zc.dict>=1.2.1',
-        'zc.twist>=1.3',
-        'Twisted>=8.0.1', # 8.0 was setuptools compatible, 8.0.1 had bugfixes.
-        # Note that Twisted builds with warnings with py2.4.  It works fine,
-        # and is considered a supported Python version on the Twisted site.
-        'zope.bforest>=1.2',
-        'zope.component',
-        'zope.event',
-        'zope.i18nmessageid',
-        'zope.interface',
-        'zope.minmax',
-        'zope.testing',
-        'rwproperty',
-        ],
+    install_requires=REQUIRES,
     extras_require={
         'monitor': [
             'zc.monitor',

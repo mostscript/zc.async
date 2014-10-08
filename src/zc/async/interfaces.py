@@ -500,5 +500,9 @@ class ICompletedCollection(zope.interface.Interface):
         "whether collection contains any jobs"
 
 class IUUID(zope.interface.Interface):
-    """A marker interface for the API of Ka-Ping Yee's uuid.UUID class.
-    See http://zesty.ca/python/uuid.html """
+    """
+    A marker interface for the API of Python standard library uuid.UUID class,
+    provided for Python <= 2.4 via Ka-Ping Yee's 'uuid' package in PyPI.
+    See: https://docs.python.org/2/library/uuid.html or 
+         http://zesty.ca/python/uuid.html
+    """
